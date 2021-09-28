@@ -5,7 +5,8 @@
             "name": "Kubernetes cluster containers should only use allowed images",
             "assignmentName": "Kubernetes cluster containers should only use allowed images",
             "parameters": {
-                "Effect": "audit"
+                "Effect": "audit",
+                "allowedContainerImagesRegex": "airsaks.azurecr.io"
             },
             "scopeList": [
                 {
