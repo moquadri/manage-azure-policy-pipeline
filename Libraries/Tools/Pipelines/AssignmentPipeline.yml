@@ -17,7 +17,7 @@ variables:
   folderName: "Assignments"
   # Reference to service connections of the different environments
   prodServiceConnection: "policy-management-spn"
-  Assignments: "febd0533-8e55-448f-b837-bd0e06f16469"
+  Assignments: ""
 
 stages:
   - stage: PROD
