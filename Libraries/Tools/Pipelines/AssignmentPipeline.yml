@@ -13,11 +13,11 @@ trigger:
 variables:
   rootFolder: '"$(System.DefaultWorkingDirectory)/"'
   # Definition location references management group of the initiative (tenant root group for delivery)
-  definitionLocation: "policy-management-spn"
+  definitionLocation: "MSMCSAIRS6121349"
   folderName: "Assignments"
   # Reference to service connections of the different environments
   prodServiceConnection: "policy-management-spn"
-  Assignments: ""
+  Assignments: "MSMCSAIRS6121349"
 
 stages:
   - stage: PROD
