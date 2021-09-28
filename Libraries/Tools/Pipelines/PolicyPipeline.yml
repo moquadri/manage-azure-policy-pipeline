@@ -43,67 +43,67 @@ stages:
                     azureSubscription: $(devServiceConnection)
                     ScriptPath: "Libraries/Tools/Az/Create-PolicyDef.ps1"
                     ScriptArguments: "-rootFolder $(rootFolder)
-                      -managementGroupName $null
+                      -managementGroupName $managementGroupName
                       -modifiedPolicies $(Policies)"
                     azurePowerShellVersion: LatestVersion
                   condition: and(succeeded(), ne(variables['Policies'], ''))
 
-  - stage: QA
-    displayName: "QA"
-    condition: contains(variables['Build.SourceBranch'], 'refs/heads/main')
-    jobs:
-      - deployment: QA_Deployment
-        environment: SCaC-QA
-        strategy:
-          runOnce:
-            deploy:
-              steps:
-                - checkout: self
-                - task: PowerShell@2
-                  displayName: "Check file diff"
-                  condition: ne(variables['Build.Reason'], 'Manual')
-                  inputs:
-                    filePath: "Libraries/Tools/Misc/checkDiff.ps1"
-                    arguments: "-folderName $(folderName)
-                      -defRootFolder $(rootFolder)"
+ # - stage: QA
+ #   displayName: "QA"
+ #  condition: contains(variables['Build.SourceBranch'], 'refs/heads/main')
+ #   jobs:
+ #     - deployment: QA_Deployment
+ #       environment: SCaC-QA
+ #       strategy:
+ #        runOnce:
+ #           deploy:
+ #             steps:
+ #               - checkout: self
+ #               - task: PowerShell@2
+ #                 displayName: "Check file diff"
+ #                 condition: ne(variables['Build.Reason'], 'Manual')
+ #                 inputs:
+ #                   filePath: "Libraries/Tools/Misc/checkDiff.ps1"
+ #                   arguments: "-folderName $(folderName)
+ #                     -defRootFolder $(rootFolder)"
 
-                - task: AzurePowerShell@4
-                  displayName: "Create Policy Definition"
-                  inputs:
-                    azureSubscription: $(nonprodServiceConnection)
-                    ScriptPath: "Libraries/Tools/Az/Create-PolicyDef.ps1"
-                    ScriptArguments: "-rootFolder $(rootFolder)
-                      -managementGroupName $null
-                      -modifiedPolicies $(Policies)"
-                    azurePowerShellVersion: LatestVersion
-                  condition: and(succeeded(), ne(variables['Policies'], ''))
+ #               - task: AzurePowerShell@4
+ #                 displayName: "Create Policy Definition"
+ #                 inputs:
+ #                   azureSubscription: $(nonprodServiceConnection)
+ #                   ScriptPath: "Libraries/Tools/Az/Create-PolicyDef.ps1"
+ #                   ScriptArguments: "-rootFolder $(rootFolder)
+ #                     -managementGroupName $null
+ #                     -modifiedPolicies $(Policies)"
+ #                   azurePowerShellVersion: LatestVersion
+ #                 condition: and(succeeded(), ne(variables['Policies'], ''))
 
-  - stage: PROD
-    displayName: "PROD"
-    condition: contains(variables['Build.SourceBranch'], 'refs/heads/main')
-    jobs:
-      - deployment: PROD_Deployment
-        environment: SCaC-PROD
-        strategy:
-          runOnce:
-            deploy:
-              steps:
-                - checkout: self
-                - task: PowerShell@2
-                  displayName: "Check file diff"
-                  condition: ne(variables['Build.Reason'], 'Manual')
-                  inputs:
-                    filePath: "Libraries/Tools/Misc/checkDiff.ps1"
-                    arguments: "-folderName $(folderName)
-                      -defRootFolder $(rootFolder)"
+  #- stage: PROD
+ #   displayName: "PROD"
+  #  condition: contains(variables['Build.SourceBranch'], 'refs/heads/main')
+  #  jobs:
+  #    - deployment: PROD_Deployment
+  #      environment: SCaC-PROD
+  #      strategy:
+  #        runOnce:
+  #          deploy:
+  #            steps:
+  #              - checkout: self
+  #              - task: PowerShell@2
+  #                displayName: "Check file diff"
+  #                condition: ne(variables['Build.Reason'], 'Manual')
+  #                inputs:
+  #                  filePath: "Libraries/Tools/Misc/checkDiff.ps1"
+  #                  arguments: "-folderName $(folderName)
+  #                    -defRootFolder $(rootFolder)"
 
-                - task: AzurePowerShell@4
-                  displayName: "Create Policy Definition"
-                  inputs:
-                    azureSubscription: $(prodServiceConnection)
-                    ScriptPath: "Libraries/Tools/Az/Create-PolicyDef.ps1"
-                    ScriptArguments: "-rootFolder $(rootFolder)
-                      -managementGroupName $(managementGroupName)
-                      -modifiedPolicies $(Policies)"
-                    azurePowerShellVersion: LatestVersion
-                  condition: and(succeeded(), ne(variables['Policies'], ''))
+  #              - task: AzurePowerShell@4
+  #                displayName: "Create Policy Definition"
+  #                inputs:
+  #                  azureSubscription: $(prodServiceConnection)
+  #                  ScriptPath: "Libraries/Tools/Az/Create-PolicyDef.ps1"
+  #                  ScriptArguments: "-rootFolder $(rootFolder)
+  #                    -managementGroupName $(managementGroupName)
+  #                    -modifiedPolicies $(Policies)"
+  #                  azurePowerShellVersion: LatestVersion
+  #                condition: and(succeeded(), ne(variables['Policies'], ''))
