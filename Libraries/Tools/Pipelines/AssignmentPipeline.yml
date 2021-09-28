@@ -17,7 +17,7 @@ variables:
   folderName: "Assignments"
   # Reference to service connections of the different environments
   prodServiceConnection: "policy-management-spn"
-  Assignments: "containerallowedimages.json"
+  Assignments: "Assignments/containerallowedimages.json"
 
 stages:
   - stage: PROD
