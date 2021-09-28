@@ -1,5 +1,5 @@
 {
-  "Name": "New Pipeline Policy",
+  "Name": "New Pipeline Policy V 0.1",
   "properties": {
     "displayName": "New Pipeline Policy",
     "description": "TEST - Policy for Monitoring whether Redis Cache has a non-SSL port enabled and the Minimum allowed TLS Version",
