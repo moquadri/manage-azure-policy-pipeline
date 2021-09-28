@@ -2,11 +2,11 @@ variables:
   rootFolder: '"$(System.DefaultWorkingDirectory)/"'
   # This pipeline is used to deploy policies into Azure
   # Management group name will be the plain text name unless it is the tenant root group where you will use the ID
-  managementGroupName: "INPUT MGMT GROUP NAME"
+  managementGroupName: "MSMCSAIRS6121349"
   # Use the plain text name of each service connection as a reference
-  devServiceConnection: "INPUT SERVICE CONNECTION"
-  nonprodServiceConnection: "INPUT SERVICE CONNECTION"
-  prodServiceConnection: "INPUT SERVICE CONNECTION"
+  devServiceConnection: "policy-management-spn"
+  nonprodServiceConnection: "policy-management-spn"
+  prodServiceConnection: "policy-management-spn"
   # references folder where modified policy files will be
   folderName: "Policies"
 
