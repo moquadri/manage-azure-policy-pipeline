@@ -24,7 +24,7 @@ stages:
     displayName: "DEV"
     jobs:
       - deployment: DEV_Deployment
-        environment: SCaC-DEV
+        environment: dev1
         strategy:
           runOnce:
             deploy:
