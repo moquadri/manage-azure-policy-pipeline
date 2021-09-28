@@ -5,7 +5,7 @@
             "name": "febd0533-8e55-448f-b837-bd0e06f16469",
             "assignmentName": "Kubernetes cluster containers should only use allowed images",
             "parameters": {
-                "Effect": "Audit"
+                "Effect": "audit"
             },
             "scopeList": [
                 {
