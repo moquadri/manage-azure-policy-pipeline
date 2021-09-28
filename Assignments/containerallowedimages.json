@@ -1,0 +1,18 @@
+{
+    "policyName": "Kubernetes cluster containers should only use allowed images",
+    "scopeGroupList": [
+        {
+            "name": "MSMCSAIRS6121349",
+            "assignmentName": "Kubernetes cluster containers should only use allowed images",
+            "parameters": {
+                "Effect": "Audit"
+            },
+            "scopeList": [
+                {
+                    "managementGroupName": "MSMCSAIRS6121349"
+                }
+            ]
+        }
+        
+    ]
+}
